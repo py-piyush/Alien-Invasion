@@ -1,6 +1,8 @@
 import sys
 import pygame
 
+from settings import Settings
+
 
 class AlienInvasion:
     """Overall class to manage game assets and behaviour"""
@@ -10,7 +12,10 @@ class AlienInvasion:
 
         # Creating pygame window
         pygame.init()
-        self.screen = pygame.display.set_mode((1200, 800))
+        self.settings = Settings()
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height)
+        )
         pygame.display.set_caption("Alien Invasion")
 
     def run_game(self) -> None:
@@ -21,8 +26,10 @@ class AlienInvasion:
                 if event.type == pygame.QUIT:
                     sys.exit()
 
+            self.screen.fill(self.settings.bg_color)
+
             # Make the most recently drawn screen visible
-            # pygame.display.flip()
+            pygame.display.flip()
             # display.flip() will update the contents of the entire display
             # display.update() allows to update a portion of the screen, instead of the entire area of the screen. Passing no arguments, updates the entire display
 
