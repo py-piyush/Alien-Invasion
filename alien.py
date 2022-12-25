@@ -1,0 +1,24 @@
+#! python3
+# alien.py: To manage alien's fleet
+
+import pygame
+from pygame.sprite import Sprite
+
+
+class Alien(Sprite):
+    """A class to represent single alien in the fleet"""
+
+    def __init__(self, ai_game) -> None:
+        super().__init__()
+        self.screen = ai_game.screen
+
+        # Load the alien image and set its rect attribute
+        self.image = pygame.image.load("images/alien.bmp")
+        self.rect = self.image.get_rect()
+
+        # Start new alien on top-left
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+
+        # Store the alien's exact horizonal position
+        self.x = float(self.rect.x)
