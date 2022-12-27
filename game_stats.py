@@ -8,7 +8,7 @@ class GameStats:
     def __init__(self, ai_game) -> None:
         """Initialize statistics"""
         self.settings = ai_game.settings
-        self.game_active = True
+        self.game_active = False
         self.reset_stats()
 
     def reset_stats(self):
