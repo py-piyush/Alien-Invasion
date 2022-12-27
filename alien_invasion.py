@@ -86,9 +86,10 @@ class AlienInvasion:
             # Hide the mouse cursor
             pygame.mouse.set_visible(False)
 
-            # Reset the game statistics
+            # Reset the game statistics and settings
             self.stats.reset_stats()
             self.stats.game_active = True
+            self.settings.initialize_dynamic_settings()
 
             # Get rid of any remaining aliens and bulets
             self.aliens.empty()
@@ -196,6 +197,7 @@ class AlienInvasion:
             # Destroy existing bullets and create a new fleet.
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _check_aliens_bottom(self):
         """Check if any aliens have reached the bottom of the screen"""
