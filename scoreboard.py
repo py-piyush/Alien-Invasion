@@ -54,6 +54,11 @@ class Scoreboard:
             self.stats.high_score = self.stats.score
             self.prep_high_score()
 
+    def store_high_score(self, score):
+        with open("high_score.txt", "w") as file:
+            score_str = f"{score:,}"
+            file.write(score_str)
+
     def show_score(self):
         """Draw score to the screen"""
         self.screen.blit(self.score_image, self.score_rect)

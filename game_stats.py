@@ -9,7 +9,10 @@ class GameStats:
         """Initialize statistics"""
         self.settings = ai_game.settings
         self.game_active = False
-        self.high_score = 0
+        # Read high score from file
+        with open("high_score.txt", "r") as file:
+            self.high_score = int(file.read().strip().replace(",", ""))
+
         self.reset_stats()
 
     def reset_stats(self):

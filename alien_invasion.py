@@ -54,6 +54,10 @@ class AlienInvasion:
         """Responds to keypress and mouse events"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                # Store high score if game is complete
+                if not self.stats.game_active:
+                    high_score = self.stats.high_score
+                    self.sb.store_high_score(high_score)
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown(event)
@@ -73,6 +77,10 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
         elif event.key == pygame.K_q:
+            # Store high score if game is complete
+            if not self.stats.game_active:
+                high_score = self.stats.high_score
+                self.sb.store_high_score(high_score)
             sys.exit()
 
     def _check_keyup(self, event):
